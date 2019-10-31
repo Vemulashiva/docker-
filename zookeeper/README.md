@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.4.14`, `3.4`](https://github.com/31z4/zookeeper-docker/blob/5a82d0b90d055f39d50e0a64ae2e00da15f9b8b1/3.4.14/Dockerfile)
--	[`3.5.6`, `3.5`, `latest`](https://github.com/31z4/zookeeper-docker/blob/8f8e8a6df4f56e00e7a7fb146c452e772fd1284a/3.5.6/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v7` ARCHITECTURE
+
+[![arm32v7/zookeeper build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/zookeeper.svg?label=arm32v7/zookeeper%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/zookeeper/)
 
 # Quick reference
 
@@ -57,7 +58,7 @@ Apache ZooKeeper is a software project of the Apache Software Foundation, provid
 ## Start a Zookeeper server instance
 
 ```console
-$ docker run --name some-zookeeper --restart always -d zookeeper
+$ docker run --name some-zookeeper --restart always -d arm32v7/zookeeper
 ```
 
 This image includes `EXPOSE 2181 2888 3888 8080` (the zookeeper client port, follower port, election port, AdminServer port respectively), so standard container linking will make it automatically available to the linked containers. Since the Zookeeper "fails fast" it's better to always restart it.
@@ -126,7 +127,7 @@ Consider using [Docker Swarm](https://www.docker.com/products/docker-swarm) when
 Zookeeper configuration is located in `/conf`. One way to change it is mounting your config file as a volume:
 
 ```console
-$ docker run --name some-zookeeper --restart always -d -v $(pwd)/zoo.cfg:/conf/zoo.cfg zookeeper
+$ docker run --name some-zookeeper --restart always -d -v $(pwd)/zoo.cfg:/conf/zoo.cfg arm32v7/zookeeper
 ```
 
 ## Environment variables

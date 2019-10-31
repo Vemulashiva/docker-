@@ -16,20 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.5.12`, `3.5`, `latest`](https://github.com/neo4j/docker-neo4j-publish/blob/b4715971c153883225394b2c66d6c8ecf8a1bc93/3.5.12/community/Dockerfile)
--	[`3.5.12-enterprise`, `3.5-enterprise`, `enterprise`](https://github.com/neo4j/docker-neo4j-publish/blob/b4715971c153883225394b2c66d6c8ecf8a1bc93/3.5.12/enterprise/Dockerfile)
--	[`3.5.11`](https://github.com/neo4j/docker-neo4j-publish/blob/c559931b4b33062e1b4fcbcd2f2e8278ff7b3390/3.5.11/community/Dockerfile)
--	[`3.5.11-enterprise`](https://github.com/neo4j/docker-neo4j-publish/blob/c559931b4b33062e1b4fcbcd2f2e8278ff7b3390/3.5.11/enterprise/Dockerfile)
--	[`3.5.8`](https://github.com/neo4j/docker-neo4j-publish/blob/53d8c355498de280a7b6ad4b9259bb8f132a1839/3.5.8/community/Dockerfile)
--	[`3.5.8-enterprise`](https://github.com/neo4j/docker-neo4j-publish/blob/53d8c355498de280a7b6ad4b9259bb8f132a1839/3.5.8/enterprise/Dockerfile)
--	[`3.5.7`](https://github.com/neo4j/docker-neo4j-publish/blob/ffc4f941cc9a301ad41d1649aa021c0fc727919b/3.5.7/community/Dockerfile)
--	[`3.5.7-enterprise`](https://github.com/neo4j/docker-neo4j-publish/blob/ffc4f941cc9a301ad41d1649aa021c0fc727919b/3.5.7/enterprise/Dockerfile)
--	[`3.5.6`](https://github.com/neo4j/docker-neo4j-publish/blob/c3d38b9d9fbe589282d4974ce66af1d3f3da0c22/3.5.6/community/Dockerfile)
--	[`3.5.6-enterprise`](https://github.com/neo4j/docker-neo4j-publish/blob/c3d38b9d9fbe589282d4974ce66af1d3f3da0c22/3.5.6/enterprise/Dockerfile)
--	[`3.4.15`, `3.4`](https://github.com/neo4j/docker-neo4j-publish/blob/a097f1663938dc56b81ae88f1cf7caba0b40004c/3.4.15/community/Dockerfile)
--	[`3.4.15-enterprise`, `3.4-enterprise`](https://github.com/neo4j/docker-neo4j-publish/blob/a097f1663938dc56b81ae88f1cf7caba0b40004c/3.4.15/enterprise/Dockerfile)
--	[`3.4.14`](https://github.com/neo4j/docker-neo4j-publish/blob/e3ddc2d97443a058c19cd5997d8c0df48c1956a9/3.4.14/community/Dockerfile)
--	[`3.4.14-enterprise`](https://github.com/neo4j/docker-neo4j-publish/blob/e3ddc2d97443a058c19cd5997d8c0df48c1956a9/3.4.14/enterprise/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v7` ARCHITECTURE
+
+[![arm32v7/neo4j build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/neo4j.svg?label=arm32v7/neo4j%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/neo4j/)
 
 # Quick reference
 
@@ -70,7 +59,7 @@ You can start a Neo4j container like this:
 docker run \
     --publish=7474:7474 --publish=7687:7687 \
     --volume=$HOME/neo4j/data:/data \
-    neo4j
+    arm32v7/neo4j
 ```
 
 which allows you to access neo4j through your browser at [http://localhost:7474](http://localhost:7474).

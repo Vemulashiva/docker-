@@ -19,6 +19,8 @@ WARNING:
 -	[`1.5.19`, `1.5`, `1`, `latest`](https://github.com/docker-library/memcached/blob/7b4e8f0188c2f4565f8077c584680df6a93bc263/debian/Dockerfile)
 -	[`1.5.19-alpine`, `1.5-alpine`, `1-alpine`, `alpine`](https://github.com/docker-library/memcached/blob/7b4e8f0188c2f4565f8077c584680df6a93bc263/alpine/Dockerfile)
 
+[![arm32v7/memcached build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/memcached.svg?label=arm32v7/memcached%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/memcached/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -55,13 +57,13 @@ Memcached's APIs provide a very large hash table distributed across multiple mac
 # How to use this image
 
 ```console
-$ docker run --name my-memcache -d memcached
+$ docker run --name my-memcache -d arm32v7/memcached
 ```
 
 ## Setting Memory Usage
 
 ```console
-$ docker run --name my-memcache -d memcached memcached -m 64
+$ docker run --name my-memcache -d arm32v7/memcached memcached -m 64
 ```
 
 This would set the Memcached server to use 64 megabytes for storage.
@@ -70,13 +72,13 @@ For infomation on configuring your memcached server, see the extensive [wiki](ht
 
 # Image Variants
 
-The `memcached` images come in many flavors, each designed for a specific use case.
+The `arm32v7/memcached` images come in many flavors, each designed for a specific use case.
 
-## `memcached:<version>`
+## `arm32v7/memcached:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `memcached:<version>-alpine`
+## `arm32v7/memcached:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

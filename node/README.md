@@ -41,8 +41,8 @@ WARNING:
 -	[`10.17.0-stretch-slim`, `10.17-stretch-slim`, `10-stretch-slim`, `dubnium-stretch-slim`, `10.17.0-slim`, `10.17-slim`, `10-slim`, `dubnium-slim`](https://github.com/nodejs/docker-node/blob/f5875531604b4b3b9fbc36437182781c3655c8ae/10/stretch-slim/Dockerfile)
 -	[`10.17.0-buster`, `10.17-buster`, `10-buster`, `dubnium-buster`](https://github.com/nodejs/docker-node/blob/f5875531604b4b3b9fbc36437182781c3655c8ae/10/buster/Dockerfile)
 -	[`10.17.0-buster-slim`, `10.17-buster-slim`, `10-buster-slim`, `dubnium-buster-slim`](https://github.com/nodejs/docker-node/blob/f5875531604b4b3b9fbc36437182781c3655c8ae/10/buster-slim/Dockerfile)
--	[`chakracore-8.11.1`, `chakracore-8.11`, `chakracore-8`](https://github.com/nodejs/docker-node/blob/617a31de36772c5e8c3b6fe3d7ad35081034a1fb/chakracore/8/Dockerfile)
--	[`chakracore-10.13.0`, `chakracore-10.13`, `chakracore-10`, `chakracore`](https://github.com/nodejs/docker-node/blob/617a31de36772c5e8c3b6fe3d7ad35081034a1fb/chakracore/10/Dockerfile)
+
+[![arm32v7/node build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/node.svg?label=arm32v7/node%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/node/)
 
 # Quick reference
 
@@ -87,9 +87,9 @@ See [How To Use This Image](https://github.com/nodejs/docker-node/blob/master/RE
 
 # Image Variants
 
-The `node` images come in many flavors, each designed for a specific use case.
+The `arm32v7/node` images come in many flavors, each designed for a specific use case.
 
-## `node:<version>`
+## `arm32v7/node:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
@@ -97,11 +97,11 @@ Some of these tags may have names like buster, jessie, or stretch in them. These
 
 This tag is based off of [`buildpack-deps`](https://hub.docker.com/_/buildpack-deps/). `buildpack-deps` is designed for the average user of Docker who has many images on their system. It, by design, has a large number of extremely common Debian packages. This reduces the number of packages that images that derive from it need to install, thus reducing the overall size of all images on your system.
 
-## `node:<version>-slim`
+## `arm32v7/node:<version>-slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `node`. Unless you are working in an environment where *only* the `node` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `arm32v7/node`. Unless you are working in an environment where *only* the `arm32v7/node` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
-## `node:<version>-alpine`
+## `arm32v7/node:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
@@ -109,7 +109,7 @@ This variant is highly recommended when final image size being as small as possi
 
 To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
-## `node:<version>-onbuild`
+## `arm32v7/node:<version>-onbuild`
 
 The `ONBUILD` image variants are deprecated, and their usage is discouraged. For more details, see [docker-library/official-images#2076](https://github.com/docker-library/official-images/issues/2076).
 

@@ -16,18 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.4.0-alpine`, `1.4.0`, `1.4`, `alpine`, `latest`](https://github.com/Kong/docker-kong/blob/3064639825d8f33fa84220993de49c5cfee5a3a9/alpine/Dockerfile)
--	[`1.4.0-ubuntu`, `1.4-ubuntu`, `ubuntu`](https://github.com/Kong/docker-kong/blob/3064639825d8f33fa84220993de49c5cfee5a3a9/ubuntu/Dockerfile)
--	[`1.4.0-centos`, `1.4-centos`, `centos`](https://github.com/Kong/docker-kong/blob/3064639825d8f33fa84220993de49c5cfee5a3a9/centos/Dockerfile)
--	[`1.3.0-alpine`, `1.3.0`, `1.3`](https://github.com/Kong/docker-kong/blob/c99d107b7c82d1f58e913d2d2c8ac4fad1ee62f0/alpine/Dockerfile)
--	[`1.3.0-ubuntu`, `1.3-ubuntu`](https://github.com/Kong/docker-kong/blob/c99d107b7c82d1f58e913d2d2c8ac4fad1ee62f0/ubuntu/Dockerfile)
--	[`1.3.0-centos`, `1.3-centos`](https://github.com/Kong/docker-kong/blob/c99d107b7c82d1f58e913d2d2c8ac4fad1ee62f0/centos/Dockerfile)
--	[`1.2.2-alpine`, `1.2.2`, `1.2`](https://github.com/Kong/docker-kong/blob/9a6d1a06b2e768949fda9ae7b30b747437fe388c/alpine/Dockerfile)
--	[`1.2.2-centos`, `1.2-centos`](https://github.com/Kong/docker-kong/blob/9a6d1a06b2e768949fda9ae7b30b747437fe388c/centos/Dockerfile)
--	[`1.1.3-alpine`, `1.1.3`, `1.1`](https://github.com/Kong/docker-kong/blob/196331b1e6b4798032af4d6c218a441e2c8db74d/alpine/Dockerfile)
--	[`1.1.3-centos`, `1.1-centos`](https://github.com/Kong/docker-kong/blob/196331b1e6b4798032af4d6c218a441e2c8db74d/centos/Dockerfile)
--	[`1.0.4-alpine`, `1.0.4`, `1.0`](https://github.com/Kong/docker-kong/blob/5a47f391b479e6660edab76813891326630bed0e/alpine/Dockerfile)
--	[`1.0.4-centos`, `1.0-centos`](https://github.com/Kong/docker-kong/blob/5a47f391b479e6660edab76813891326630bed0e/centos/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v7` ARCHITECTURE
+
+[![arm32v7/kong build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/kong.svg?label=arm32v7/kong%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/kong/)
 
 # Quick reference
 
@@ -102,7 +93,7 @@ docker run --rm \
     -e "KONG_DATABASE=postgres" \
     -e "KONG_PG_HOST=kong-database" \
     -e "KONG_CASSANDRA_CONTACT_POINTS=kong-database" \
-    kong kong migrations bootstrap
+    arm32v7/kong kong migrations bootstrap
 ```
 
 In the above example, both Cassandra and PostgreSQL are configured, but you should update the `KONG_DATABASE` environment variable with either `cassandra` or `postgres`.
@@ -128,7 +119,7 @@ $ docker run -d --name kong \
     -p 8443:8443 \
     -p 8001:8001 \
     -p 8444:8444 \
-    kong
+    arm32v7/kong
 ```
 
 If everything went well, and if you created your container with the default ports, Kong should be listening on your host's `8000` ([Proxy](https://docs.konghq.com/latest/configuration/#proxy_port)), `8443` ([Proxy SSL](https://docs.konghq.com/latest/configuration/#proxy_listen_ssl)), `8001` ([Admin API](https://docs.konghq.com/latest/configuration/#admin_listen)) and `8444` ([Admin API SSL](https://docs.konghq.com/latest/configuration/#admin_listen_ssl)) ports.
@@ -151,7 +142,7 @@ $ docker run -d --name kong \
     -p 8443:8443 \
     -p 8001:8001 \
     -p 8444:8444 \
-    kong
+    arm32v7/kong
 ```
 
 ## Reload Kong in a running container
@@ -174,22 +165,6 @@ Since version 1.x you can run Kong in a Service Mesh deployment as a platform-ag
 
 -	[Streams and Service Mesh](https://docs.konghq.com/latest/streams-and-service-mesh/)
 -	[Kubernetes and Service Mesh](https://github.com/Kong/kong-mesh-dist-kubernetes)
-
-# Image Variants
-
-The `kong` images come in many flavors, each designed for a specific use case.
-
-## `kong:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `kong:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 

@@ -17,11 +17,9 @@ WARNING:
 # Supported tags and respective `Dockerfile` links
 
 -	[`4.0.5`, `4.0`, `4`, `latest`](https://github.com/docker-library/redmine/blob/4064a505db909322bda24823c200f4c97985d638/4.0/Dockerfile)
--	[`4.0.5-passenger`, `4.0-passenger`, `4-passenger`, `passenger`](https://github.com/docker-library/redmine/blob/fd5541e76d7f2230484c19a784b8f9ee884559ce/4.0/passenger/Dockerfile)
--	[`4.0.5-alpine`, `4.0-alpine`, `4-alpine`, `alpine`](https://github.com/docker-library/redmine/blob/4064a505db909322bda24823c200f4c97985d638/4.0/alpine/Dockerfile)
 -	[`3.4.12`, `3.4`, `3`](https://github.com/docker-library/redmine/blob/ba9880cc3a224c7e5e15c1f9bf1757aa7c4c5b92/3.4/Dockerfile)
--	[`3.4.12-passenger`, `3.4-passenger`, `3-passenger`](https://github.com/docker-library/redmine/blob/fd5541e76d7f2230484c19a784b8f9ee884559ce/3.4/passenger/Dockerfile)
--	[`3.4.12-alpine`, `3.4-alpine`, `3-alpine`](https://github.com/docker-library/redmine/blob/ba9880cc3a224c7e5e15c1f9bf1757aa7c4c5b92/3.4/alpine/Dockerfile)
+
+[![arm32v7/redmine build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/redmine.svg?label=arm32v7/redmine%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v7/job/redmine/)
 
 # Quick reference
 
@@ -63,7 +61,7 @@ Redmine is a free and open source, web-based project management and issue tracki
 This is the simplest setup; just run redmine.
 
 ```console
-$ docker run -d --name some-redmine redmine
+$ docker run -d --name some-redmine arm32v7/redmine
 ```
 
 > not for multi-user production use ([redmine wiki](http://www.redmine.org/projects/redmine/wiki/RedmineInstall#Supported-database-back-ends))
@@ -89,7 +87,7 @@ Running Redmine with a database server is the recommended way.
 2.	start redmine
 
 	```console
-	$ docker run -d --name some-redmine --network some-network -e REDMINE_DB_POSTGRES=some-postgres -e REDMINE_DB_USERNAME=redmine -e REDMINE_DB_PASSWORD=secret redmine
+	$ docker run -d --name some-redmine --network some-network -e REDMINE_DB_POSTGRES=some-postgres -e REDMINE_DB_USERNAME=redmine -e REDMINE_DB_PASSWORD=secret arm32v7/redmine
 	```
 
 ## ... via [`docker stack deploy`](https://docs.docker.com/engine/reference/commandline/stack_deploy/) or [`docker-compose`](https://github.com/docker/compose)
@@ -143,7 +141,7 @@ The Docker documentation is a good starting point for understanding the differen
 2.	Start your `redmine` container like this:
 
 	```console
-	$ docker run -d --name some-redmine -v /my/own/datadir:/usr/src/redmine/files --link some-postgres:postgres redmine
+	$ docker run -d --name some-redmine -v /my/own/datadir:/usr/src/redmine/files --link some-postgres:postgres arm32v7/redmine
 	```
 
 The `-v /my/own/datadir:/usr/src/redmine/files` part of the command mounts the `/my/own/datadir` directory from the underlying host system as `/usr/src/redmine/files` inside the container, where Redmine will store uploaded files.
@@ -201,26 +199,10 @@ This variable is used to create an initial `config/secrets.yml` and set the `sec
 As an alternative to passing sensitive information via environment variables, `_FILE` may be appended to the previously listed environment variables, causing the initialization script to load the values for those variables from files present in the container. In particular, this can be used to load passwords from Docker secrets stored in `/run/secrets/<secret_name>` files. For example:
 
 ```console
-$ docker run -d --name some-redmine -e REDMINE_DB_MYSQL_FILE=/run/secrets/mysql-host -e REDMINE_DB_PASSWORD_FILE=/run/secrets/mysql-root redmine:tag
+$ docker run -d --name some-redmine -e REDMINE_DB_MYSQL_FILE=/run/secrets/mysql-host -e REDMINE_DB_PASSWORD_FILE=/run/secrets/mysql-root arm32v7/redmine:tag
 ```
 
 Currently, this is only supported for `REDMINE_DB_MYSQL`, `REDMINE_DB_POSTGRES`, `REDMINE_DB_PORT`, `REDMINE_DB_USERNAME`, `REDMINE_DB_PASSWORD`, `REDMINE_DB_DATABASE`, `REDMINE_DB_ENCODING`, and `REDMINE_SECRET_KEY_BASE`.
-
-# Image Variants
-
-The `redmine` images come in many flavors, each designed for a specific use case.
-
-## `redmine:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-## `redmine:<version>-alpine`
-
-This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
-
-This variant is highly recommended when final image size being as small as possible is desired. The main caveat to note is that it does use [musl libc](http://www.musl-libc.org) instead of [glibc and friends](http://www.etalabs.net/compare_libcs.html), so certain software might run into issues depending on the depth of their libc requirements. However, most software doesn't have an issue with this, so this variant is usually a very safe choice. See [this Hacker News comment thread](https://news.ycombinator.com/item?id=10782897) for more discussion of the issues that might arise and some pro/con comparisons of using Alpine-based images.
-
-To minimize image size, it's uncommon for additional related tools (such as `git` or `bash`) to be included in Alpine-based images. Using this image as a base, add the things you need in your own Dockerfile (see the [`alpine` image description](https://hub.docker.com/_/alpine/) for examples of how to install packages if you are unfamiliar).
 
 # License
 
