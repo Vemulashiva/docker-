@@ -33,6 +33,8 @@ WARNING:
 -	[`5.5.5`, `5.5`, `5`](https://github.com/docker-solr/docker-solr/blob/a89957c6b5242ec4b72e539e39cafe27b7e39a6d/5.5/Dockerfile)
 -	[`5.5.5-slim`, `5.5-slim`, `5-slim`](https://github.com/docker-solr/docker-solr/blob/a89957c6b5242ec4b72e539e39cafe27b7e39a6d/5.5/slim/Dockerfile)
 
+[![amd64/solr build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/solr.svg?label=amd64/solr%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/solr/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -73,7 +75,7 @@ Learn more on [Apache Solr homepage](http://lucene.apache.org/solr/) and in the 
 To run a single Solr server:
 
 ```console
-$ docker run -p 8983:8983 -t solr
+$ docker run -p 8983:8983 -t amd64/solr
 ```
 
 Then with a web browser go to http://localhost:8983/ to see the Solr Admin Console.
@@ -86,15 +88,15 @@ This repository is available on [github.com/docker-solr/docker-solr](https://git
 
 # Image Variants
 
-The `solr` images come in many flavors, each designed for a specific use case.
+The `amd64/solr` images come in many flavors, each designed for a specific use case.
 
-## `solr:<version>`
+## `amd64/solr:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `solr:<version>-slim`
+## `amd64/solr:<version>-slim`
 
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `solr`. Unless you are working in an environment where *only* the `solr` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
+This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `amd64/solr`. Unless you are working in an environment where *only* the `amd64/solr` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 

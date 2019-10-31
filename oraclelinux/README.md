@@ -23,6 +23,8 @@ WARNING:
 -	[`6.10`, `6`](https://github.com/oracle/container-images/blob/a5399bf87cefa2ea601e2e0de6e579c92beb805e/6.10/Dockerfile)
 -	[`6-slim`](https://github.com/oracle/container-images/blob/a5399bf87cefa2ea601e2e0de6e579c92beb805e/6-slim/Dockerfile)
 
+[![amd64/oraclelinux build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/oraclelinux.svg?label=amd64/oraclelinux%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/oraclelinux/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -56,7 +58,7 @@ Oracle Linux is an open-source operating system available under the GNU General 
 
 ## How to use these images
 
-The Oracle Linux images are intended for use in the **FROM** field of a downstream `Dockerfile`. For example, to use the latest optimized Oracle Linux 7 image, specify `FROM oraclelinux:7-slim`.
+The Oracle Linux images are intended for use in the **FROM** field of a downstream `Dockerfile`. For example, to use the latest optimized Oracle Linux 7 image, specify `FROM amd64/oraclelinux:7-slim`.
 
 ## Official Resources
 

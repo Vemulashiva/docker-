@@ -18,6 +18,8 @@ WARNING:
 
 -	[`latest`, `20191006`](https://github.com/archlinux/archlinux-docker/blob/ed18f615efd16f3a39b2c3eeed79a1f0c6a1dfca/Dockerfile)
 
+[![amd64/archlinux build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/archlinux.svg?label=amd64/archlinux%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/archlinux/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -55,7 +57,7 @@ Our strong community is diverse and helpful, and we pride ourselves on the range
 
 # About this image
 
-The base filesystem tarball for this image is auto-generated in Arch Linux infrastructure at the beginning of each month. Given the rolling-release nature of Arch Linux, images are tagged with the timestamp of the date they were generated. For example, `archlinux:20191006` was generated the Sixth of October of 2019. The latest tag will contain the latest build always.
+The base filesystem tarball for this image is auto-generated in Arch Linux infrastructure at the beginning of each month. Given the rolling-release nature of Arch Linux, images are tagged with the timestamp of the date they were generated. For example, `amd64/archlinux:20191006` was generated the Sixth of October of 2019. The latest tag will contain the latest build always.
 
 This image is intended to serve the following goals:
 

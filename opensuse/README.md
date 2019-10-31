@@ -22,7 +22,9 @@ An archive for images of unsupported versions can be found at [`opensuse/archive
 
 # Supported tags and respective `Dockerfile` links
 
-**No supported tags**
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `amd64` ARCHITECTURE
+
+[![amd64/opensuse build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/opensuse.svg?label=amd64/opensuse%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/opensuse/)
 
 # Quick reference
 

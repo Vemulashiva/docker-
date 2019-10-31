@@ -18,6 +18,8 @@ WARNING:
 
 -	[`1.4.0-alpine3.10`, `1.4-alpine3.10`, `1-alpine3.10`, `latest`](https://github.com/dshearer/jobber-docker/blob/64d2a0778ae73986cb90f1c374d9dfb42c9b8483/alpine3.10/Dockerfile)
 
+[![amd64/jobber build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/jobber.svg?label=amd64/jobber%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/jobber/)
+
 # Quick reference
 
 -	**Where to get help**:  

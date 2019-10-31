@@ -19,6 +19,8 @@ WARNING:
 -	[`8`, `8u232`, `8-al2-full`, `latest`](https://github.com/corretto/corretto-8-docker/blob/36e50e6fec65b3b12fa4e595e8b8fa1def0b39f5/Dockerfile)
 -	[`11`, `11.0.5`, `11-al2-full`](https://github.com/corretto/corretto-11-docker/blob/8a8fdf18ac8700a98bf8995cc85ec70616e5e130/Dockerfile)
 
+[![amd64/amazoncorretto build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/amazoncorretto.svg?label=amd64/amazoncorretto%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/amazoncorretto/)
+
 # Quick reference
 
 -	**Where to get help**:  

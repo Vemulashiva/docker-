@@ -21,6 +21,8 @@ WARNING:
 -	[`2018.03.0.20191014.0`, `2018.03`, `1`](https://github.com/amazonlinux/container-images/blob/566b99a65831000e6ae8856d98e8d8e68741871f/Dockerfile)
 -	[`2018.03.0.20191014.0-with-sources`, `2018.03-with-sources`, `1-with-sources`](https://github.com/amazonlinux/container-images/blob/bd732e6748bed4ef08ca1dcf759b676659e0ff44/Dockerfile)
 
+[![amd64/amazonlinux build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/amd64/job/amazonlinux.svg?label=amd64/amazonlinux%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/amd64/job/amazonlinux/)
+
 # Quick reference
 
 -	**Where to get help**:  
