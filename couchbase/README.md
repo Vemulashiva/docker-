@@ -16,9 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`latest`, `enterprise`, `6.0.3`, `enterprise-6.0.3`](https://github.com/couchbase/docker/blob/201af2d1fd4988d23d980cef5b91763ee5fdc9b7/enterprise/couchbase-server/6.0.3/Dockerfile)
--	[`6.5.0-beta2`](https://github.com/couchbase/docker/blob/201af2d1fd4988d23d980cef5b91763ee5fdc9b7/enterprise/couchbase-server/6.5.0-beta2/Dockerfile)
--	[`community`, `community-6.0.0`](https://github.com/couchbase/docker/blob/201af2d1fd4988d23d980cef5b91763ee5fdc9b7/community/couchbase-server/6.0.0/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `s390x` ARCHITECTURE
+
+[![s390x/couchbase build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/couchbase.svg?label=s390x/couchbase%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/couchbase/)
 
 # Quick reference
 

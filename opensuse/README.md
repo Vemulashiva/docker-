@@ -22,7 +22,9 @@ An archive for images of unsupported versions can be found at [`opensuse/archive
 
 # Supported tags and respective `Dockerfile` links
 
-**No supported tags**
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `s390x` ARCHITECTURE
+
+[![s390x/opensuse build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/s390x/job/opensuse.svg?label=s390x/opensuse%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/s390x/job/opensuse/)
 
 # Quick reference
 
