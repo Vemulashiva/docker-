@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`0.4.0`, `0.4`, `0`, `latest`](https://github.com/tianon/docker-brew-cirros/blob/d04ffb350eb29c24bafe12f6b109aa3990309771/arches/amd64/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/cirros build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/cirros.svg?label=winamd64/cirros%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/cirros/)
 
 # Quick reference
 

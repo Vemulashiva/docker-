@@ -16,16 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`devel-20191009`, `devel`](https://github.com/tianon/docker-bash/blob/b17a58367aa72c0c3b9c284f7362a32388774e45/devel/Dockerfile)
--	[`5.0.11`, `5.0`, `5`, `latest`](https://github.com/tianon/docker-bash/blob/b3f7588b0c2d28dc41d5bebbae30d21eded7d730/5.0/Dockerfile)
--	[`4.4.23`, `4.4`, `4`](https://github.com/tianon/docker-bash/blob/3682e16bca63b20ab51745afa30156e2740fc5c6/4.4/Dockerfile)
--	[`4.3.48`, `4.3`](https://github.com/tianon/docker-bash/blob/3682e16bca63b20ab51745afa30156e2740fc5c6/4.3/Dockerfile)
--	[`4.2.53`, `4.2`](https://github.com/tianon/docker-bash/blob/3682e16bca63b20ab51745afa30156e2740fc5c6/4.2/Dockerfile)
--	[`4.1.17`, `4.1`](https://github.com/tianon/docker-bash/blob/3682e16bca63b20ab51745afa30156e2740fc5c6/4.1/Dockerfile)
--	[`4.0.44`, `4.0`](https://github.com/tianon/docker-bash/blob/3682e16bca63b20ab51745afa30156e2740fc5c6/4.0/Dockerfile)
--	[`3.2.57`, `3.2`, `3`](https://github.com/tianon/docker-bash/blob/3682e16bca63b20ab51745afa30156e2740fc5c6/3.2/Dockerfile)
--	[`3.1.23`, `3.1`](https://github.com/tianon/docker-bash/blob/3682e16bca63b20ab51745afa30156e2740fc5c6/3.1/Dockerfile)
--	[`3.0.22`, `3.0`](https://github.com/tianon/docker-bash/blob/3682e16bca63b20ab51745afa30156e2740fc5c6/3.0/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/bash build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/bash.svg?label=winamd64/bash%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/bash/)
 
 # Quick reference
 
@@ -75,7 +68,7 @@ There are a few main things that are important to note regarding this image:
 ## Interactive shell
 
 ```console
-$ docker run -it --rm bash:4.4
+$ docker run -it --rm winamd64/bash:4.4
 bash-4.4# which bash
 /usr/local/bin/bash
 bash-4.4# echo $BASH_VERSION
@@ -85,16 +78,16 @@ bash-4.4# echo $BASH_VERSION
 ## Testing scripts via bind-mount
 
 ```console
-$ docker run -it --rm -v /path/to/script.sh:/script.sh:ro bash:4.4 bash /script.sh
+$ docker run -it --rm -v /path/to/script.sh:/script.sh:ro winamd64/bash:4.4 bash /script.sh
 ...
-$ docker run -it --rm -v /path/to/script.sh:/script.sh:ro bash:3.2 bash /script.sh
+$ docker run -it --rm -v /path/to/script.sh:/script.sh:ro winamd64/bash:3.2 bash /script.sh
 ...
 ```
 
 ## Testing scripts via `Dockerfile`
 
 ```dockerfile
-FROM bash:4.4
+FROM winamd64/bash:4.4
 
 COPY script.sh /
 

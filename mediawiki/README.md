@@ -16,9 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.33.1`, `1.33`, `stable`, `latest`](https://github.com/wikimedia/mediawiki-docker/blob/f623859e09da4c3af9cb95a9464a43cad3177cd3/1.33/Dockerfile)
--	[`1.32.5`, `1.32`, `legacy`](https://github.com/wikimedia/mediawiki-docker/blob/f623859e09da4c3af9cb95a9464a43cad3177cd3/1.32/Dockerfile)
--	[`1.31.5`, `1.31`, `lts`, `legacylts`](https://github.com/wikimedia/mediawiki-docker/blob/f623859e09da4c3af9cb95a9464a43cad3177cd3/1.31/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/mediawiki build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/mediawiki.svg?label=winamd64/mediawiki%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/mediawiki/)
 
 # Quick reference
 
@@ -58,13 +58,13 @@ MediaWiki is free and open-source wiki software. Originally developed by Magnus 
 The basic pattern for starting a `mediawiki` instance is:
 
 ```console
-$ docker run --name some-mediawiki -d mediawiki
+$ docker run --name some-mediawiki -d winamd64/mediawiki
 ```
 
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run --name some-mediawiki -p 8080:80 -d mediawiki
+$ docker run --name some-mediawiki -p 8080:80 -d winamd64/mediawiki
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.
@@ -76,7 +76,7 @@ When first accessing the webserver provided by this image, it will go through a 
 ## MySQL
 
 ```console
-$ docker run --name some-mediawiki --link some-mysql:mysql -d mediawiki
+$ docker run --name some-mediawiki --link some-mysql:mysql -d winamd64/mediawiki
 ```
 
 -	Database type: `MySQL, MariaDB, or equivalent`
@@ -90,7 +90,7 @@ By default, this image does not include any volumes.
 The paths `/var/www/html/images` and `/var/www/html/LocalSettings.php` are things that generally ought to be volumes, but do not explicitly have a `VOLUME` declaration in this image because volumes cannot be removed.
 
 ```console
-$ docker run --rm mediawiki tar -cC /var/www/html/sites . | tar -xC /path/on/host/sites
+$ docker run --rm winamd64/mediawiki tar -cC /var/www/html/sites . | tar -xC /path/on/host/sites
 ```
 
 ## ... via [`docker stack deploy`](https://docs.docker.com/engine/reference/commandline/stack_deploy/) or [`docker-compose`](https://github.com/docker/compose)

@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`2.7-7.2.0`, `2.7-7.2`, `2.7-7`, `2.7`, `2-7.2.0`, `2-7.2`, `2-7`, `2`, `2.7-7.2.0-jessie`, `2.7-7.2-jessie`, `2.7-7-jessie`, `2.7-jessie`, `2-7.2.0-jessie`, `2-7.2-jessie`, `2-7-jessie`, `2-jessie`](https://github.com/docker-library/pypy/blob/d1be8318bbc3d1fe881ba87631901b9d9d68396b/2.7/Dockerfile)
--	[`2.7-7.2.0-slim`, `2.7-7.2-slim`, `2.7-7-slim`, `2.7-slim`, `2-7.2.0-slim`, `2-7.2-slim`, `2-7-slim`, `2-slim`, `2.7-7.2.0-slim-jessie`, `2.7-7.2-slim-jessie`, `2.7-7-slim-jessie`, `2.7-slim-jessie`, `2-7.2.0-slim-jessie`, `2-7.2-slim-jessie`, `2-7-slim-jessie`, `2-slim-jessie`](https://github.com/docker-library/pypy/blob/d1be8318bbc3d1fe881ba87631901b9d9d68396b/2.7/slim/Dockerfile)
--	[`3.6-7.2.0`, `3.6-7.2`, `3.6-7`, `3.6`, `3-7.2.0`, `3-7.2`, `3-7`, `3`, `latest`, `3.6-7.2.0-stretch`, `3.6-7.2-stretch`, `3.6-7-stretch`, `3.6-stretch`, `3-7.2.0-stretch`, `3-7.2-stretch`, `3-7-stretch`, `3-stretch`, `stretch`](https://github.com/docker-library/pypy/blob/d1be8318bbc3d1fe881ba87631901b9d9d68396b/3.6/Dockerfile)
--	[`3.6-7.2.0-slim`, `3.6-7.2-slim`, `3.6-7-slim`, `3.6-slim`, `3-7.2.0-slim`, `3-7.2-slim`, `3-7-slim`, `3-slim`, `slim`, `3.6-7.2.0-slim-stretch`, `3.6-7.2-slim-stretch`, `3.6-7-slim-stretch`, `3.6-slim-stretch`, `3-7.2.0-slim-stretch`, `3-7.2-slim-stretch`, `3-7-slim-stretch`, `3-slim-stretch`, `slim-stretch`](https://github.com/docker-library/pypy/blob/d1be8318bbc3d1fe881ba87631901b9d9d68396b/3.6/slim/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/pypy build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/pypy.svg?label=winamd64/pypy%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/pypy/)
 
 # Quick reference
 
@@ -61,7 +60,7 @@ PyPy started out as a Python interpreter written in the Python language itself. 
 ## Create a `Dockerfile` in your Python app project
 
 ```dockerfile
-FROM pypy:3
+FROM winamd64/pypy:3
 
 WORKDIR /usr/src/app
 
@@ -76,7 +75,7 @@ CMD [ "pypy3", "./your-daemon-or-script.py" ]
 or (if you need to use Python 2):
 
 ```dockerfile
-FROM pypy:2
+FROM winamd64/pypy:2
 
 WORKDIR /usr/src/app
 
@@ -100,30 +99,14 @@ $ docker run -it --rm --name my-running-app my-python-app
 For many simple, single file projects, you may find it inconvenient to write a complete `Dockerfile`. In such cases, you can run a Python script by using the Python Docker image directly:
 
 ```console
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp pypy:3 pypy3 your-daemon-or-script.py
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp winamd64/pypy:3 pypy3 your-daemon-or-script.py
 ```
 
 or (again, if you need to use Python 2):
 
 ```console
-$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp pypy:2 pypy your-daemon-or-script.py
+$ docker run -it --rm --name my-running-script -v "$PWD":/usr/src/myapp -w /usr/src/myapp winamd64/pypy:2 pypy your-daemon-or-script.py
 ```
-
-# Image Variants
-
-The `pypy` images come in many flavors, each designed for a specific use case.
-
-## `pypy:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-Some of these tags may have names like jessie or stretch in them. These are the suite code names for releases of [Debian](https://wiki.debian.org/DebianReleases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Debian.
-
-This tag is based off of [`buildpack-deps`](https://hub.docker.com/_/buildpack-deps/). `buildpack-deps` is designed for the average user of Docker who has many images on their system. It, by design, has a large number of extremely common Debian packages. This reduces the number of packages that images that derive from it need to install, thus reducing the overall size of all images on your system.
-
-## `pypy:<version>-slim`
-
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `pypy`. Unless you are working in an environment where *only* the `pypy` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 

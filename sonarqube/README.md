@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`7.9.1-community`, `7.9-community`, `latest`, `lts`](https://github.com/SonarSource/docker-sonarqube/blob/8ae0fadc72fef64334998e811f1b9cf68a458a2c/7/community/Dockerfile)
--	[`8.0-community-beta`, `8-community-beta`, `community-beta`](https://github.com/SonarSource/docker-sonarqube/blob/8ae0fadc72fef64334998e811f1b9cf68a458a2c/8/community/Dockerfile)
--	[`8.0-developer-beta`, `8-developer-beta`, `developer-beta`](https://github.com/SonarSource/docker-sonarqube/blob/8ae0fadc72fef64334998e811f1b9cf68a458a2c/8/developer/Dockerfile)
--	[`8.0-enterprise-beta`, `8-enterprise-beta`, `enterprise-beta`](https://github.com/SonarSource/docker-sonarqube/blob/8ae0fadc72fef64334998e811f1b9cf68a458a2c/8/enterprise/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `windows-amd64` ARCHITECTURE
+
+[![winamd64/sonarqube build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/sonarqube.svg?label=winamd64/sonarqube%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/windows-amd64/job/sonarqube/)
 
 # Quick reference
 
@@ -76,7 +75,7 @@ ulimit -u 4096
 Start the server by running:
 
 ```console
-$ docker run -d --name sonarqube -p 9000:9000 sonarqube
+$ docker run -d --name sonarqube -p 9000:9000 winamd64/sonarqube
 ```
 
 By default you can login as `admin` with password `admin`, see [authentication documentation](https://docs.sonarqube.org/latest/instance-administration/security/).
@@ -130,7 +129,7 @@ Follow these steps for your first installation:
 	 -v $SONARQUBE_HOME/conf:/opt/sonarqube/conf \
 	 -v $SONARQUBE_HOME/extensions:/opt/sonarqube/extensions \
 	 -v $SONARQUBE_HOME/data:/opt/sonarqube/data \
-	 sonarqube --init
+	 winamd64/sonarqube --init
 	```
 
 3.	Configure sonar.properties to configure the database settings. Templates are available for every supported database. Just uncomment and configure the template you need and comment out the lines dedicated to H2:
@@ -152,7 +151,7 @@ Follow these steps for your first installation:
 	    -v $SONARQUBE_HOME/extensions:/opt/sonarqube/extensions \
 	    -v $SONARQUBE_HOME/logs:/opt/sonarqube/logs \
 	    -v $SONARQUBE_HOME/data:/opt/sonarqube/data \
-	    sonarqube
+	    winamd64/sonarqube
 	```
 
 ## Upgrade SonarQube
@@ -175,7 +174,7 @@ Follow these steps to upgrade SonarQube:
 	    -v $SONARQUBE_HOME/conf:/opt/sonarqube/conf \
 	    -v $SONARQUBE_HOME/extensions:/opt/sonarqube/extensions \
 	    -v $SONARQUBE_HOME/data:/opt/sonarqube/data \
-	    sonarqube --init  
+	    winamd64/sonarqube --init  
 	```
 
 4.	Take a look at the [Upgrade Guide](https://docs.sonarqube.org/latest/setup/upgrading/) for information on:
@@ -188,8 +187,8 @@ Follow these steps to upgrade SonarQube:
 5.	Stop and remove the sonarqube container (a restart is not enough as the environment variables are only evaluated during the first run, not during a restart):
 
 	```console
-	$ docker stop sonarqube
-	$ docker rm sonarqube
+	$ docker stop winamd64/sonarqube
+	$ docker rm winamd64/sonarqube
 	```
 
 6.	Run docker:
@@ -200,7 +199,7 @@ Follow these steps to upgrade SonarQube:
 	    -v $SONARQUBE_HOME/extensions:/opt/sonarqube/extensions \
 	    -v $SONARQUBE_HOME/logs:/opt/sonarqube/logs \
 	    -v $SONARQUBE_HOME/data:/opt/sonarqube/data \
-	    sonarqube
+	    winamd64/sonarqube
 	```
 
 7.	Browse to `http://yourSonarQubeServerURL/setup` and follow the setup instructions.
@@ -223,7 +222,7 @@ $ docker run -d --name sonarqube \
     -v $SONARQUBE_HOME/extensions:/opt/sonarqube/extensions \
     -v $SONARQUBE_HOME/logs:/opt/sonarqube/logs \
     -v $SONARQUBE_HOME/data:/opt/sonarqube/data \
-    sonarqube
+    winamd64/sonarqube
 ```
 
 Use of the environment variables `SONARQUBE_JDBC_USERNAME`, `SONARQUBE_JDBC_PASSWORD`, and `SONARQUBE_JDBC_URL` is deprecated and will stop working in future releases.
@@ -251,7 +250,7 @@ $ docker run -ti sonarqube-custom
 Starting from SonarQube 7.8, SonarQube stops gracefully, waiting for any tasks in progress to finish. Waiting for in-progress tasks to finish can take a large amount of time which the docker does not expect by default when stopping. To avoid having the SonarQube instance killed by the Docker daemon after 10 seconds, it is best to configure a timeout to stop the container with `--stop-timeout`. For example:
 
 ```console
-docker run --stop-timeout 3600 sonarqube
+docker run --stop-timeout 3600 winamd64/sonarqube
 ```
 
 ## Administration
