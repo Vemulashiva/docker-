@@ -16,10 +16,12 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`18.04`, `bionic-20191010`, `bionic`, `latest`](https://github.com/tianon/docker-brew-ubuntu-core/blob/8f4b095575c0e00752e10e60765c1bd65625ae95/bionic/Dockerfile)
--	[`19.04`, `disco-20191011`, `disco`](https://github.com/tianon/docker-brew-ubuntu-core/blob/8f4b095575c0e00752e10e60765c1bd65625ae95/disco/Dockerfile)
--	[`19.10`, `eoan-20191017`, `eoan`, `rolling`](https://github.com/tianon/docker-brew-ubuntu-core/blob/8f4b095575c0e00752e10e60765c1bd65625ae95/eoan/Dockerfile)
--	[`16.04`, `xenial-20191010`, `xenial`](https://github.com/tianon/docker-brew-ubuntu-core/blob/8f4b095575c0e00752e10e60765c1bd65625ae95/xenial/Dockerfile)
+-	[`18.04`, `bionic-20191010`, `bionic`, `latest`](https://github.com/tianon/docker-brew-ubuntu-core/blob/9c5fc5f361080f35e9f2133700eece703d1fc792/bionic/Dockerfile)
+-	[`19.04`, `disco-20191011`, `disco`](https://github.com/tianon/docker-brew-ubuntu-core/blob/9c5fc5f361080f35e9f2133700eece703d1fc792/disco/Dockerfile)
+-	[`19.10`, `eoan-20191017`, `eoan`, `rolling`](https://github.com/tianon/docker-brew-ubuntu-core/blob/9c5fc5f361080f35e9f2133700eece703d1fc792/eoan/Dockerfile)
+-	[`16.04`, `xenial-20191010`, `xenial`](https://github.com/tianon/docker-brew-ubuntu-core/blob/9c5fc5f361080f35e9f2133700eece703d1fc792/xenial/Dockerfile)
+
+[![i386/ubuntu build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/i386/job/ubuntu.svg?label=i386/ubuntu%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/i386/job/ubuntu/)
 
 # Quick reference
 
@@ -60,9 +62,9 @@ Development of Ubuntu is led by Canonical Ltd. Canonical generates revenue throu
 
 This image is built from official rootfs tarballs provided by Canonical (specifically, https://partner-images.canonical.com/core/).
 
-The `ubuntu:latest` tag points to the "latest LTS", since that's the version recommended for general use. The `ubuntu:rolling` tag points to the latest release (regardless of LTS status).
+The `i386/ubuntu:latest` tag points to the "latest LTS", since that's the version recommended for general use. The `i386/ubuntu:rolling` tag points to the latest release (regardless of LTS status).
 
-Along a similar vein, the `ubuntu:devel` tag is an alias for whichever release the "devel" suite on the mirrors currently points to, as determined by the following one-liner: `wget -qO- http://archive.ubuntu.com/ubuntu/dists/devel/Release | awk -F ': ' '$1 == "Codename" { print $2; exit }'`
+Along a similar vein, the `i386/ubuntu:devel` tag is an alias for whichever release the "devel" suite on the mirrors currently points to, as determined by the following one-liner: `wget -qO- http://archive.ubuntu.com/ubuntu/dists/devel/Release | awk -F ': ' '$1 == "Codename" { print $2; exit }'`
 
 ## Locales
 
