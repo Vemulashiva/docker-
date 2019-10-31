@@ -22,7 +22,9 @@ An archive for images of unsupported versions can be found at [`opensuse/archive
 
 # Supported tags and respective `Dockerfile` links
 
-**No supported tags**
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v6` ARCHITECTURE
+
+[![arm32v6/opensuse build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/opensuse.svg?label=arm32v6/opensuse%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/opensuse/)
 
 # Quick reference
 

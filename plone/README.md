@@ -16,13 +16,11 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`5.2.0`, `5.2`, `5`, `latest`](https://github.com/plone/plone.docker/blob/163708ce4228e162647a3666937a86b72c8c0fc6/5.2/5.2.0/debian/Dockerfile)
 -	[`5.2.0-alpine`, `5.2-alpine`, `5-alpine`, `alpine`](https://github.com/plone/plone.docker/blob/163708ce4228e162647a3666937a86b72c8c0fc6/5.2/5.2.0/alpine/Dockerfile)
--	[`5.2.0-python2`, `5.2-python2`, `5-python2`, `python2`](https://github.com/plone/plone.docker/blob/163708ce4228e162647a3666937a86b72c8c0fc6/5.2/5.2.0/python2/Dockerfile)
--	[`5.1.6`, `5.1`](https://github.com/plone/plone.docker/blob/163708ce4228e162647a3666937a86b72c8c0fc6/5.1/5.1.6/debian/Dockerfile)
 -	[`5.1.6-alpine`, `5.1-alpine`](https://github.com/plone/plone.docker/blob/163708ce4228e162647a3666937a86b72c8c0fc6/5.1/5.1.6/alpine/Dockerfile)
--	[`4.3.19`, `4.3`, `4`](https://github.com/plone/plone.docker/blob/163708ce4228e162647a3666937a86b72c8c0fc6/4.3/4.3.19/debian/Dockerfile)
 -	[`4.3.19-alpine`, `4.3-alpine`, `4-alpine`](https://github.com/plone/plone.docker/blob/163708ce4228e162647a3666937a86b72c8c0fc6/4.3/4.3.19/alpine/Dockerfile)
+
+[![arm32v6/plone build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/plone.svg?label=arm32v6/plone%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/plone/)
 
 # Quick reference
 
@@ -68,7 +66,7 @@ WARNING:
 This will download and start the latest Plone 5 container, based on [Debian](https://www.debian.org/).
 
 ```console
-$ docker run -p 8080:8080 plone
+$ docker run -p 8080:8080 arm32v6/plone
 ```
 
 This image includes `EXPOSE 8080` (the Plone port), so standard container linking will make it automatically available to the linked containers. Now you can add a Plone Site at http://localhost:8080 - default Zope user and password are `admin/admin`.
@@ -80,14 +78,14 @@ ZEO cluster are best suited for production setups, you will **need** a loadbalan
 Start ZEO server in the background
 
 ```console
-$ docker run --name=zeo plone zeo
+$ docker run --name=zeo arm32v6/plone zeo
 ```
 
 Start 2 Plone clients (also in the background)
 
 ```console
-$ docker run --link=zeo -e ZEO_ADDRESS=zeo:8080 -p 8081:8080 plone
-$ docker run --link=zeo -e ZEO_ADDRESS=zeo:8080 -p 8082:8080 plone
+$ docker run --link=zeo -e ZEO_ADDRESS=zeo:8080 -p 8081:8080 arm32v6/plone
+$ docker run --link=zeo -e ZEO_ADDRESS=zeo:8080 -p 8082:8080 arm32v6/plone
 ```
 
 ### Start Plone in debug mode
@@ -95,7 +93,7 @@ $ docker run --link=zeo -e ZEO_ADDRESS=zeo:8080 -p 8082:8080 plone
 You can also start Plone in debug mode (`fg`) by running
 
 ```console
-$ docker run -p 8080:8080 plone fg
+$ docker run -p 8080:8080 arm32v6/plone fg
 ```
 
 ### Add-ons
@@ -103,7 +101,7 @@ $ docker run -p 8080:8080 plone fg
 You can enable Plone add-ons via the `ADDONS` environment variable
 
 ```console
-$ docker run -p 8080:8080 -e PLONE_ADDONS="eea.facetednavigation Products.PloneFormGen" plone
+$ docker run -p 8080:8080 -e PLONE_ADDONS="eea.facetednavigation Products.PloneFormGen" arm32v6/plone
 ```
 
 For more information on how to extend this image with your own custom settings, adding more add-ons, building it or mounting volumes, please refer to our [documentation](https://docs.plone.org/manage/docker/docs/index.html)
@@ -155,13 +153,13 @@ Thanks to [Antonio De Marinis](https://github.com/demarant), [Sven Strack](https
 
 # Image Variants
 
-The `plone` images come in many flavors, each designed for a specific use case.
+The `arm32v6/plone` images come in many flavors, each designed for a specific use case.
 
-## `plone:<version>`
+## `arm32v6/plone:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `plone:<version>-alpine`
+## `arm32v6/plone:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 

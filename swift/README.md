@@ -16,17 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`5.1.1`, `5.1`, `5.1.1-bionic`, `5.1-bionic`, `bionic`, `latest`](https://github.com/apple/swift-docker/blob/4ac33ae94bcd05bb0d5ae851d6be63264f0b9c27/5.1/ubuntu/18.04/Dockerfile)
--	[`5.1.1-xenial`, `5.1-xenial`, `xenial`](https://github.com/apple/swift-docker/blob/4ac33ae94bcd05bb0d5ae851d6be63264f0b9c27/5.1/ubuntu/16.04/Dockerfile)
--	[`5.1.1-slim`, `5.1-slim`, `5.1.1-bionic-sim`, `5.1-bionic-slim`, `bionic-slim`, `slim`](https://github.com/apple/swift-docker/blob/4ac33ae94bcd05bb0d5ae851d6be63264f0b9c27/5.1/ubuntu/18.04/slim/Dockerfile)
--	[`5.1.1-xenial-slim`, `5.1-xenial-slim`, `xenial-slim`](https://github.com/apple/swift-docker/blob/4ac33ae94bcd05bb0d5ae851d6be63264f0b9c27/5.1/ubuntu/16.04/slim/Dockerfile)
--	[`5.0.3`, `5.0`, `5.0.3-bionic`, `5.0-bionic`](https://github.com/apple/swift-docker/blob/78d0a2dde09af579d06e2114a101fd90b01fbfb0/5.0/ubuntu/18.04/Dockerfile)
--	[`5.0.3-xenial`, `5.0-xenial`](https://github.com/apple/swift-docker/blob/78d0a2dde09af579d06e2114a101fd90b01fbfb0/5.0/ubuntu/16.04/Dockerfile)
--	[`5.0.3-slim`, `5.0-slim`, `5.0.3-bionic-slim`, `5.0-bionic-slim`](https://github.com/apple/swift-docker/blob/78d0a2dde09af579d06e2114a101fd90b01fbfb0/5.0/ubuntu/18.04/slim/Dockerfile)
--	[`5.0.3-xenial-slim`, `5.0-xenial-slim`](https://github.com/apple/swift-docker/blob/78d0a2dde09af579d06e2114a101fd90b01fbfb0/5.0/ubuntu/16.04/slim/Dockerfile)
--	[`4.2.4`, `4.2`, `4`](https://github.com/apple/swift-docker/blob/f0a61df2dd9a14dd6988e6017ae58cc63df37f41/4.2/ubuntu/16.04/Dockerfile)
--	[`4.1.3`, `4.1`](https://github.com/apple/swift-docker/blob/34aa283f9b3473ab22b2282f71773781b121af19/4.1/Dockerfile)
--	[`4.0.3`, `4.0`](https://github.com/apple/swift-docker/blob/34aa283f9b3473ab22b2282f71773781b121af19/4.0/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v6` ARCHITECTURE
+
+[![arm32v6/swift build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/swift.svg?label=arm32v6/swift%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/swift/)
 
 # Quick reference
 
@@ -73,19 +65,19 @@ To learn more about the programming language, visit [swift.org](https://swift.or
 Swift requires [a little bit of extra security privilege](https://github.com/apple/swift-docker/issues/9#issuecomment-272527182) to run the REPL. The following command creates an ephemeral container, attaches your terminal to it and starts the Swift REPL. A great way to try out pre-release builds!
 
 ```bash
-docker run --cap-add sys_ptrace -it --rm swift swift
+docker run --cap-add sys_ptrace -it --rm arm32v6/swift swift
 ```
 
 ##### Pull the Docker Image From Docker Hub:
 
 ```bash
-docker pull swift
+docker pull arm32v6/swift
 ```
 
 ##### Create a Container from the Image and Attach It:
 
 ```bash
-docker run  -it --name swiftfun swift /bin/bash
+docker run  -it --name swiftfun arm32v6/swift /bin/bash
 ```
 
 ##### To Start and Attach Your Image Later:
@@ -101,20 +93,6 @@ and then attach it
 ```bash
 docker attach swiftfun
 ```
-
-# Image Variants
-
-The `swift` images come in many flavors, each designed for a specific use case.
-
-## `swift:<version>`
-
-This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
-
-Some of these tags may have names like bionic or xenial in them. These are the suite code names for releases of [Ubuntu](https://wiki.ubuntu.com/Releases) and indicate which release the image is based on. If your image needs to install any additional packages beyond what comes with the image, you'll likely want to specify one of these explicitly to minimize breakage when there are new releases of Ubuntu.
-
-## `swift:<version>-slim`
-
-This image does not contain the common packages contained in the default tag and only contains the minimal packages needed to run `swift`. Unless you are working in an environment where *only* the `swift` image will be deployed and you have space constraints, we highly recommend using the default image of this repository.
 
 # License
 

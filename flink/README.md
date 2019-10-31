@@ -16,10 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.8.2-scala_2.11`, `1.8-scala_2.11`](https://github.com/docker-flink/docker-flink/blob/2e4b45b10e8efe04c324e44cacf7df16b2553f0f/1.8/scala_2.11-debian/Dockerfile)
--	[`1.8.2-scala_2.12`, `1.8-scala_2.12`, `1.8.2`, `1.8`](https://github.com/docker-flink/docker-flink/blob/2e4b45b10e8efe04c324e44cacf7df16b2553f0f/1.8/scala_2.12-debian/Dockerfile)
--	[`1.9.1-scala_2.11`, `1.9-scala_2.11`, `scala_2.11`](https://github.com/docker-flink/docker-flink/blob/1741d4663a98e206796f529bc522d59d54888cab/1.9/scala_2.11-debian/Dockerfile)
--	[`1.9.1-scala_2.12`, `1.9-scala_2.12`, `scala_2.12`, `1.9.1`, `1.9`, `latest`](https://github.com/docker-flink/docker-flink/blob/1741d4663a98e206796f529bc522d59d54888cab/1.9/scala_2.12-debian/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v6` ARCHITECTURE
+
+[![arm32v6/flink build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/flink.svg?label=arm32v6/flink%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v6/job/flink/)
 
 # Quick reference
 
@@ -67,13 +66,13 @@ Starting with Flink 1.5, images without "hadoop" in the tag are the "Hadoop-free
 You can run a JobManager (master).
 
 ```console
-$ docker run --name flink_jobmanager -d -t flink jobmanager
+$ docker run --name flink_jobmanager -d -t arm32v6/flink jobmanager
 ```
 
 You can also run a TaskManager (worker). Notice that workers need to register with the JobManager directly or via ZooKeeper so the master starts to send them tasks to execute.
 
 ```console
-$ docker run --name flink_taskmanager -d -t flink taskmanager
+$ docker run --name flink_taskmanager -d -t arm32v6/flink taskmanager
 ```
 
 ## Running a cluster using Docker Compose
