@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`3.4`, `latest`](https://github.com/cruxlinux/docker-crux/blob/da081a9004c5559cd77a1e2c2521193ccb2afdd2/Dockerfile)
--	[`3.2`](https://github.com/cruxlinux/docker-crux/blob/07e966125ba3d6d48a12489830917e8a9bc983a7/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `ppc64le` ARCHITECTURE
+
+[![ppc64le/crux build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/crux.svg?label=ppc64le/crux%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/crux/)
 
 # Quick reference
 

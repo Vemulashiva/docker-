@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.13.2`, `1.13`, `1`, `1.13.2-apache`, `1.13-apache`, `1-apache`, `apache`, `latest`](https://github.com/backdrop-ops/backdrop-docker/blob/1c82e369b6bf1b8ab45becda7f9f9777fe7f6a7f/1/apache/Dockerfile)
--	[`1.13.2-fpm`, `1.13-fpm`, `1-fpm`, `fpm`](https://github.com/backdrop-ops/backdrop-docker/blob/1c82e369b6bf1b8ab45becda7f9f9777fe7f6a7f/1/fpm/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `ppc64le` ARCHITECTURE
+
+[![ppc64le/backdrop build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/backdrop.svg?label=ppc64le/backdrop%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/backdrop/)
 
 # Quick reference
 
@@ -57,7 +58,7 @@ Backdrop CMS enables people to build highly customized websites, affordably, thr
 The basic pattern for starting a `backdrop` instance is:
 
 ```console
-$ docker run --name some-backdrop --link some-mysql:mysql -d backdrop
+$ docker run --name some-backdrop --link some-mysql:mysql -d ppc64le/backdrop
 ```
 
 The following environment variables are also honored for configuring your Backdrop CMS instance:
@@ -74,7 +75,7 @@ The `BACKDROP_DB_NAME` **must already exist** on the given MySQL server. Check o
 If you'd like to be able to access the instance from the host without the container's IP, standard port mappings can be used:
 
 ```console
-$ docker run --name some-backdrop --link some-mysql:mysql -p 8080:80 -d backdrop
+$ docker run --name some-backdrop --link some-mysql:mysql -p 8080:80 -d ppc64le/backdrop
 ```
 
 Then, access it via `http://localhost:8080` or `http://host-ip:8080` in a browser.

@@ -16,16 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`gzserver7`, `gzserver7-xenial`](https://github.com/osrf/docker_images/blob/e296cc1a131ef3b2ac62a91d6bf31ab6fb27884d/gazebo/7/ubuntu/xenial/gzserver7/Dockerfile)
--	[`libgazebo7`, `libgazebo7-xenial`](https://github.com/osrf/docker_images/blob/e296cc1a131ef3b2ac62a91d6bf31ab6fb27884d/gazebo/7/ubuntu/xenial/libgazebo7/Dockerfile)
--	[`gzserver9-xenial`](https://github.com/osrf/docker_images/blob/ad70e430c50dd3ee987ca2e7153f40c6071e87a4/gazebo/9/ubuntu/xenial/gzserver9/Dockerfile)
--	[`libgazebo9-xenial`](https://github.com/osrf/docker_images/blob/ad70e430c50dd3ee987ca2e7153f40c6071e87a4/gazebo/9/ubuntu/xenial/libgazebo9/Dockerfile)
--	[`gzserver9`, `gzserver9-bionic`](https://github.com/osrf/docker_images/blob/30cfa33eacf61711114f8aca1cd38271fe14d61b/gazebo/9/ubuntu/bionic/gzserver9/Dockerfile)
--	[`libgazebo9`, `libgazebo9-bionic`](https://github.com/osrf/docker_images/blob/30cfa33eacf61711114f8aca1cd38271fe14d61b/gazebo/9/ubuntu/bionic/libgazebo9/Dockerfile)
--	[`gzserver9-stretch`](https://github.com/osrf/docker_images/blob/e2c145e63a7b14d2ebd7928b4bdd0302195fe704/gazebo/9/debian/stretch/gzserver9/Dockerfile)
--	[`libgazebo9-stretch`](https://github.com/osrf/docker_images/blob/e2c145e63a7b14d2ebd7928b4bdd0302195fe704/gazebo/9/debian/stretch/libgazebo9/Dockerfile)
--	[`gzserver10`, `gzserver10-bionic`](https://github.com/osrf/docker_images/blob/00d02282c2393ccde655fa0c333b4410a10b3985/gazebo/10/ubuntu/bionic/gzserver10/Dockerfile)
--	[`libgazebo10`, `libgazebo10-bionic`, `latest`](https://github.com/osrf/docker_images/blob/00d02282c2393ccde655fa0c333b4410a10b3985/gazebo/10/ubuntu/bionic/libgazebo10/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `ppc64le` ARCHITECTURE
+
+[![ppc64le/gazebo build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/gazebo.svg?label=ppc64le/gazebo%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/gazebo/)
 
 # Quick reference
 
@@ -65,7 +58,7 @@ Robot simulation is an essential tool in every roboticist's toolbox. A well-desi
 ## Create a `Dockerfile` in your Gazebo project
 
 ```dockerfile
-FROM gazebo:gzserver8
+FROM ppc64le/gazebo:gzserver8
 # place here your application's setup specifics
 CMD [ "gzserver", "my-gazebo-app-args" ]
 ```
@@ -96,7 +89,7 @@ Gazebo uses the `~/.gazebo/` directory for storing logs, models and scene info. 
 For example, if one wishes to use their own `.gazebo` folder that already resides in their local home directory, with a username of `ubuntu`, we can simple launch the container with an additional volume argument:
 
 ```console
-$ docker run -v "/home/ubuntu/.gazebo/:/root/.gazebo/" gazebo
+$ docker run -v "/home/ubuntu/.gazebo/:/root/.gazebo/" ppc64le/gazebo
 ```
 
 One thing to be careful about is that gzserver logs to files named `/root/.gazebo/server-<port>/*.log`, where `<port>` is the port number that server is listening on (11345 by default). If you run and mount multiple containers using the same default port and same host side directory, then they will collide and attempt writing to the same file. If you want to run multiple gzservers on the same docker host, then a bit more clever volume mounting of `~/.gazebo/` subfolders would be required.
@@ -116,13 +109,13 @@ In this short example, we'll spin up a new container running gazebo server, conn
 > First launch a gazebo server with a mounted volume for logging and name the container gazebo:
 
 ```console
-$ docker run -d -v="/tmp/.gazebo/:/root/.gazebo/" --name=gazebo gazebo
+$ docker run -d -v="/tmp/.gazebo/:/root/.gazebo/" --name=gazebo ppc64le/gazebo
 ```
 
 > Now open a new bash session in the container using the same entrypoint to configure the environment. Then download the double_pendulum model and load it into the simulation.
 
 ```console
-$ docker exec -it gazebo bash
+$ docker exec -it ppc64le/gazebo bash
 $ apt-get update && apt-get install -y curl
 $ curl -o double_pendulum.sdf http://models.gazebosim.org/double_pendulum_with_base/model-1_4.sdf
 $ gz model --model-name double_pendulum --spawn-file double_pendulum.sdf

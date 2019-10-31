@@ -22,7 +22,9 @@ An archive for images of unsupported versions can be found at [`opensuse/archive
 
 # Supported tags and respective `Dockerfile` links
 
-**No supported tags**
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `ppc64le` ARCHITECTURE
+
+[![ppc64le/opensuse build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/opensuse.svg?label=ppc64le/opensuse%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/opensuse/)
 
 # Quick reference
 

@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`latest`, `0.62`](https://github.com/vaygr/docker-sourcemage/blob/a03bbe3ae7bbb839c3c69afd4504ca336f7b9cb9/stable/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `ppc64le` ARCHITECTURE
+
+[![ppc64le/sourcemage build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/sourcemage.svg?label=ppc64le/sourcemage%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/ppc64le/job/sourcemage/)
 
 # Quick reference
 
@@ -56,13 +58,13 @@ All of our scripts are [GPL](https://www.gnu.org/licenses/gpl.html)'d and our pa
 These images are based on our [chroot images](https://sourcemage.org/Install/Chroot). To use them, simply do the following:
 
 ```shell
-$ docker run -it sourcemage
+$ docker run -it ppc64le/sourcemage
 ```
 
 or
 
 ```shell
-$ docker run -it sourcemage:0.62
+$ docker run -it ppc64le/sourcemage:0.62
 ```
 
 ---
