@@ -19,6 +19,8 @@ WARNING:
 -	[`latest`, `2019.03`](https://github.com/perl6/docker/blob/e26d1937190790a6b6110ba8220b98fe3bb97c04/Dockerfile)
 -	[`alpine`, `2019.03-alpine`](https://github.com/perl6/docker/blob/d2175a31e85d52cfad674814422ecf9779ea08e1/alpine/Dockerfile)
 
+[![arm64v8/rakudo-star build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/rakudo-star.svg?label=arm64v8/rakudo-star%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm64v8/job/rakudo-star/)
+
 # Quick reference
 
 -	**Where to get help**:  
@@ -65,7 +67,7 @@ Perl 6 Language Documentation: [http://doc.perl6.org/](http://doc.perl6.org/)
 Simply running a container with the image will launch a Perl 6 REPL:
 
 ```console
-$ docker run -it rakudo-star
+$ docker run -it arm64v8/rakudo-star
 > say 'Hello, Perl!'
 Hello, Perl!
 ```
@@ -73,7 +75,7 @@ Hello, Perl!
 You can also provide perl6 command line switches to `docker run`:
 
 ```console
-$ docker run -it rakudo-star -e 'say "Hello!"'
+$ docker run -it arm64v8/rakudo-star -e 'say "Hello!"'
 ```
 
 # Contributing/Getting Help
@@ -84,13 +86,13 @@ Issues for Rakudo are tracked in RT: [https://rt.perl.org/](https://rt.perl.org/
 
 # Image Variants
 
-The `rakudo-star` images come in many flavors, each designed for a specific use case.
+The `arm64v8/rakudo-star` images come in many flavors, each designed for a specific use case.
 
-## `rakudo-star:<version>`
+## `arm64v8/rakudo-star:<version>`
 
 This is the defacto image. If you are unsure about what your needs are, you probably want to use this one. It is designed to be used both as a throw away container (mount your source code and start the container to start your app), as well as the base to build other images off of.
 
-## `rakudo-star:<version>-alpine`
+## `arm64v8/rakudo-star:<version>-alpine`
 
 This image is based on the popular [Alpine Linux project](http://alpinelinux.org), available in [the `alpine` official image](https://hub.docker.com/_/alpine). Alpine Linux is much smaller than most distribution base images (~5MB), and thus leads to much slimmer images in general.
 
