@@ -16,8 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.9.0`, `1.9`, `1`, `latest`](https://github.com/composer/docker/blob/8595a2016b538e0f6945b8c2113ec85dcf04868c/1.9/Dockerfile)
--	[`1.8.6`, `1.8`](https://github.com/composer/docker/blob/8595a2016b538e0f6945b8c2113ec85dcf04868c/1.8/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v5` ARCHITECTURE
+
+[![arm32v5/composer build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/composer.svg?label=arm32v5/composer%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/composer/)
 
 # Quick reference
 
@@ -61,7 +62,7 @@ Running the `composer` image is as simple as follows:
 ```console
 $ docker run --rm --interactive --tty \
   --volume $PWD:/app \
-  composer install
+  arm32v5/composer install
 ```
 
 ### Persistent cache / global configuration
@@ -72,7 +73,7 @@ You can bind mount the Composer home directory from your host to the container t
 $ docker run --rm --interactive --tty \
   --volume $PWD:/app \
   --volume ${COMPOSER_HOME:-$HOME/.composer}:/tmp \
-  composer install
+  arm32v5/composer install
 ```
 
 **Note:** this relies on the fact that the `COMPOSER_HOME` value is set to `/tmp` in the image by default.
@@ -86,7 +87,7 @@ $ docker run --rm --interactive --tty \
   --volume ${COMPOSER_HOME:-$HOME/.config/composer}:$COMPOSER_HOME \
   --volume ${COMPOSER_CACHE_DIR:-$HOME/.cache/composer}:$COMPOSER_CACHE_DIR \
   --volume $PWD:/app \
-  composer install
+  arm32v5/composer install
 ```
 
 ### Filesystem permissions
@@ -97,7 +98,7 @@ By default, Composer runs as root inside the container. This can lead to permiss
 $ docker run --rm --interactive --tty \
   --volume $PWD:/app \
   --user $(id -u):$(id -g) \
-  composer install
+  arm32v5/composer install
 ```
 
 ### Private repositories / SSH agent
@@ -110,7 +111,7 @@ $ eval $(ssh-agent); \
   --volume $PWD:/app \
   --volume $SSH_AUTH_SOCK:/ssh-auth.sock \
   --env SSH_AUTH_SOCK=/ssh-auth.sock \
-  composer install
+  arm32v5/composer install
 ```
 
 **Note:** This currently does not work on OSX, see [docker/for-mac#410](https://github.com/docker/for-mac/issues/410).
@@ -126,7 +127,7 @@ $ eval $(ssh-agent); \
   --volume /etc/group:/etc/group:ro \
   --env SSH_AUTH_SOCK=/ssh-auth.sock \
   --user $(id -u):$(id -g) \
-  composer install
+  arm32v5/composer install
 ```
 
 # Troubleshooting
@@ -144,7 +145,7 @@ Suggestions:
 	**Note:** Docker 17.05 introduced [multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/), simplifying this enormously:
 
 	```dockerfile
-	COPY --from=composer /usr/bin/composer /usr/bin/composer
+	COPY --from=arm32v5/composer /usr/bin/composer /usr/bin/composer
 	```
 
 -	(alternatively) specify the target [platform](https://getcomposer.org/doc/06-config.md#platform) / extension(s) in your `composer.json`:
@@ -165,7 +166,7 @@ Suggestions:
 	```console
 	$ docker run --rm --interactive --tty \
 	  --volume $PWD:/app \
-	  composer install --ignore-platform-reqs --no-scripts
+	  arm32v5/composer install --ignore-platform-reqs --no-scripts
 	```
 
 # License

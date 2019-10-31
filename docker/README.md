@@ -16,14 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`19.03.5-beta1`, `19.03-rc`, `rc`, `test`](https://github.com/docker-library/docker/blob/21b17056a748a279997729c7d26ddb23e4fe5d5e/19.03-rc/Dockerfile)
--	[`19.03.5-beta1-dind`, `19.03-rc-dind`, `rc-dind`, `test-dind`](https://github.com/docker-library/docker/blob/92d278e671f32a9ee4a3c0668e46a41f4a3b74b0/19.03-rc/dind/Dockerfile)
--	[`19.03.5-beta1-dind-rootless`, `19.03-rc-dind-rootless`, `rc-dind-rootless`, `test-dind-rootless`](https://github.com/docker-library/docker/blob/c01ffa41486f70c34f020c769bc5bddf106367ea/19.03-rc/dind-rootless/Dockerfile)
--	[`19.03.5-beta1-git`, `19.03-rc-git`, `rc-git`, `test-git`](https://github.com/docker-library/docker/blob/98ffef81ebfa7601a9ed2f0bf56d78f426bf253c/19.03-rc/git/Dockerfile)
--	[`19.03.4`, `19.03`, `19`, `stable`, `latest`](https://github.com/docker-library/docker/blob/4dd3f3fe1f263ea74cdc8bed6091008cf62ab751/19.03/Dockerfile)
--	[`19.03.4-dind`, `19.03-dind`, `19-dind`, `stable-dind`, `dind`](https://github.com/docker-library/docker/blob/92d278e671f32a9ee4a3c0668e46a41f4a3b74b0/19.03/dind/Dockerfile)
--	[`19.03.4-dind-rootless`, `19.03-dind-rootless`, `19-dind-rootless`, `stable-dind-rootless`, `dind-rootless`](https://github.com/docker-library/docker/blob/c01ffa41486f70c34f020c769bc5bddf106367ea/19.03/dind-rootless/Dockerfile)
--	[`19.03.4-git`, `19.03-git`, `19-git`, `stable-git`, `git`](https://github.com/docker-library/docker/blob/4975dca2dd357705c5613045348402ab664ccdf0/19.03/git/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v5` ARCHITECTURE
+
+[![arm32v5/docker build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/docker.svg?label=arm32v5/docker%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/docker/)
 
 # Quick reference
 
@@ -94,7 +89,7 @@ $ docker run --privileged --name some-docker -d \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-ca:/certs/ca \
 	-v some-docker-certs-client:/certs/client \
-	docker:dind
+	arm32v5/docker:dind
 ```
 
 **Note:** `--privileged` is required for Docker-in-Docker to function properly, but it should be used with care as it provides full access to the host environment, as explained [in the relevant section of the Docker documentation](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities).
@@ -105,7 +100,7 @@ $ docker run --privileged --name some-docker -d \
 $ docker run --rm --network some-network \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-client:/certs/client:ro \
-	docker:latest version
+	arm32v5/docker:latest version
 Client: Docker Engine - Community
  Version:           18.09.8
  API version:       1.39
@@ -130,7 +125,7 @@ Server: Docker Engine - Community
 $ docker run -it --rm --network some-network \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-client:/certs/client:ro \
-	docker:latest sh
+	arm32v5/docker:latest sh
 / # docker version
 Client: Docker Engine - Community
  Version:           18.09.8
@@ -156,7 +151,7 @@ Server: Docker Engine - Community
 $ docker run --rm --network some-network \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-client:/certs/client:ro \
-	docker:latest info
+	arm32v5/docker:latest info
 Containers: 0
  Running: 0
  Paused: 0
@@ -208,7 +203,7 @@ WARNING: bridge-nf-call-ip6tables is disabled
 ```
 
 ```console
-$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock docker:latest version
+$ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock arm32v5/docker:latest version
 Client: Docker Engine - Community
  Version:           18.09.8
  API version:       1.39
@@ -237,7 +232,7 @@ $ docker run --privileged --name some-docker -d \
 	-e DOCKER_TLS_CERTDIR=/certs \
 	-v some-docker-certs-ca:/certs/ca \
 	-v some-docker-certs-client:/certs/client \
-	docker:dind --storage-driver overlay2
+	arm32v5/docker:dind --storage-driver overlay2
 ```
 
 ## Rootless
@@ -257,7 +252,7 @@ The Docker documentation is a good starting point for understanding the differen
 2.	Start your `docker` container like this:
 
 	```console
-	$ docker run --privileged --name some-docker -v /my/own/var-lib-docker:/var/lib/docker -d docker:dind
+	$ docker run --privileged --name some-docker -v /my/own/var-lib-docker:/var/lib/docker -d arm32v5/docker:dind
 	```
 
 The `-v /my/own/var-lib-docker:/var/lib/docker` part of the command mounts the `/my/own/var-lib-docker` directory from the underlying host system as `/var/lib/docker` inside the container, where Docker by default will write its data files.

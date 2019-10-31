@@ -16,7 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`1.x`, `1.16.x`, `1.16.9`, `latest`](https://github.com/ExpressGateway/docker-express-gateway/blob/2d67c88c4fff2779a969bd740c936dd9c23722e1/alpine/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v5` ARCHITECTURE
+
+[![arm32v5/express-gateway build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/express-gateway.svg?label=arm32v5/express-gateway%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/express-gateway/)
 
 # Quick reference
 
@@ -89,7 +91,7 @@ $ docker run -d --name express-gateway \
     -v /my/own/datadir:/var/lib/eg \
     -p 8080:8080 \
     -p 9876:9876 \
-    express-gateway
+    arm32v5/express-gateway
 ```
 
 *Note:* You might want to expose other ports to the host in case you're serving your APIs through **HTTPS**.
@@ -100,10 +102,10 @@ You can now read the docs at [express-gateway.io/docs](http://express-gateway.io
 
 ### Install plugin
 
-You can install custom plugins to the current Express Gateway image just creating a new `Dockerfile`, use `express-gateway` as base image and then install the required plugins as global yarn packages
+You can install custom plugins to the current Express Gateway image just creating a new `Dockerfile`, use `arm32v5/express-gateway` as base image and then install the required plugins as global yarn packages
 
 ```dockerfile
-FROM express-gateway
+FROM arm32v5/express-gateway
 RUN yarn global add express-gateway-plugin-name
 ```
 

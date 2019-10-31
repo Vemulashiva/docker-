@@ -16,13 +16,9 @@ WARNING:
 
 # Supported tags and respective `Dockerfile` links
 
--	[`4.0.7`, `4.0`, `latest`](https://github.com/crate/docker-crate/blob/50d0dfd9aaa05efc2d41c3ed1a2b4768fc5b36fb/Dockerfile)
--	[`3.3.5`, `3.3`](https://github.com/crate/docker-crate/blob/f5c527fb12df004e3fc620fd9d91b97686f56ef8/Dockerfile)
--	[`3.2.8`, `3.2`](https://github.com/crate/docker-crate/blob/cd46c51f77fabac4abd60ca29f7da82faaaf2b5f/Dockerfile)
--	[`3.1.6`, `3.1`](https://github.com/crate/docker-crate/blob/f15504034e1d0ea67d4517daec2ff4adf1435d65/Dockerfile)
--	[`3.0.7`, `3.0`](https://github.com/crate/docker-crate/blob/ca1f030be8be51c126fa908400aa031be6eb0412/Dockerfile)
--	[`2.3.11`, `2.3`](https://github.com/crate/docker-crate/blob/f15780fc923017c66040c4baf79f2efd506655ac/Dockerfile)
--	[`2.2.7`, `2.2`](https://github.com/crate/docker-crate/blob/771c9b60ffbb03c2692e09a2539c7411327d7e3d/Dockerfile)
+**WARNING:** THIS IMAGE *IS NOT SUPPORTED* ON THE `arm32v5` ARCHITECTURE
+
+[![arm32v5/crate build status badge](https://img.shields.io/jenkins/s/https/doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/crate.svg?label=arm32v5/crate%20%20build%20job)](https://doi-janky.infosiftr.net/job/multiarch/job/arm32v5/job/crate/)
 
 # Quick reference
 
@@ -71,7 +67,7 @@ The smallest CrateDB clusters can easily ingest tens of thousands of records per
 Spin up this Docker image like so:
 
 ```console
-$ docker run -p 4200:4200 crate
+$ docker run -p 4200:4200 arm32v5/crate
 ```
 
 Once you're up and running, head on over to [the introductory docs](https://crate.io/docs/stable/hello.html).
